@@ -19,7 +19,6 @@ public class DeformableMesh : MonoBehaviour
         originalVertices = cylinder.Mesh.vertices.ToArray();
         modifiedVertices = cylinder.Mesh.vertices;
         normals = cylinder.Mesh.normals;
-        print("Mesh Regenerated");
     }
 
     public void AddDepression(Vector3 depressionPoint, float radius)
@@ -51,6 +50,5 @@ public class DeformableMesh : MonoBehaviour
 
         cylinder.Mesh.SetVertices(modifiedVertices);
         cylinder.collider.sharedMesh = cylinder.Mesh;
-        print("Mesh Depressed");
     }
 }

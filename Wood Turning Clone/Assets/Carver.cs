@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Carver : MonoBehaviour
 {
@@ -11,31 +12,72 @@ public class Carver : MonoBehaviour
     public float maximumSpeed = 1f;
     private Transform dragObj = null;
     private float length;
+    private int fingerId = -1;
     RaycastHit hit;
-    // Start is called before the first frame update
+
+    public Transform boxTip;
+    public Transform triangleTip;
+    public Transform archTip;
+
+    private void Awake()
+    {
+        fingerId = 0;
+    }
+
     void Start()
     {
         mainCamera = Camera.main;
+        StateHandler.instance.OnStateChanged += OnStateChanged;
+
+        dragObj = transform;
+        length = (transform.position - mainCamera.transform.position).magnitude;
+
+        /*Ray ray = mainCamera.ScreenPointToRay(transform.position);
+        if (!dragObj)
+        {
+            if (Physics.Raycast(ray, out hit) && hit.rigidbody)
+            {
+                dragObj = hit.transform;
+                length = hit.distance;
+            }
+        }*/
+
+    }
+    private void OnDestroy()
+    {
+        StateHandler.instance.OnStateChanged -= OnStateChanged;
     }
 
-    // Update is called once per frame
+    private void OnStateChanged(State state)
+    {
+        if(state == State.Paint ||state == State.Evaluate)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Update()
     {
 #if UNITY_STANDALONE
-        if (Input.GetMouseButton(0))
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (Input.GetMouseButton(0))
             Drag(Input.mousePosition);
-        else
-            dragObj = null;
+        //else
+        //dragObj = null;
 #elif UNITY_ANDROID || UNITY_IOS
-if (Input.touchCount > 0)
+
+        if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began && EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+                return;
+            else if(touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
                 Drag(touch.position);
             }
-            else
+            /*else
             {
                 dragObj = null;
-            }
+            }*/
 #endif
     }
 
@@ -59,26 +101,27 @@ if (Input.touchCount > 0)
         }
     }
 
-#if UNITY_STANDALONE
-    private void OnMouseDrag()
+    public void ChangeTip(TipTypes tipType)
     {
-        /*Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 4.5f);
-        Vector3 pos = mainCamera.ScreenToWorldPoint(mousePosition);
-        pos.y = transform.position.y;
-        transform.position = pos;*/
-    }
-#endif
-
-#if UNITY_ANDROID || UNITY_IOS
-        if (Input.touchCount > 0)
+        DisableTips();
+        if(tipType == TipTypes.BoxTip)
         {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
-            {
-                Vector3 touchedPos = mainCamera.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, transform.position.z - mainCamera.transform.position.z));
-                transform.position = Vector3.Lerp(transform.position, touchedPos, Time.deltaTime * touchFollowSpeed);
-            }
+            boxTip.gameObject.SetActive(true);
         }
-#endif
+        else if(tipType == TipTypes.TriangleTip)
+        {
+            triangleTip.gameObject.SetActive(true);
+        }
+        else if( tipType == TipTypes.ArchTip)
+        {
+            archTip.gameObject.SetActive(true);
+        }
+    }
+    private void DisableTips()
+    {
+        boxTip.gameObject.SetActive(false);
+        triangleTip.gameObject.SetActive(false);
+        archTip.gameObject.SetActive(false);
+    }
 
 }

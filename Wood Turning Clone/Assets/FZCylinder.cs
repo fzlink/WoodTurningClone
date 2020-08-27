@@ -13,6 +13,7 @@ public class FZCylinder : MonoBehaviour
 
     private MeshFilter filter;
     public MeshCollider collider;
+    public Material painterMaterial;
     public Mesh Mesh { get { return filter.mesh; } }
 
     private void Start()
@@ -20,6 +21,15 @@ public class FZCylinder : MonoBehaviour
         filter = GetComponent<MeshFilter>();
         collider = GetComponent<MeshCollider>();
         CreateCylinder();
+        StateHandler.instance.OnStateChanged += OnStateChanged;
+    }
+
+    private void OnStateChanged(State state)
+    {
+        if(state == State.Paint)
+        {
+            GetComponent<MeshRenderer>().material = painterMaterial;
+        }
     }
 
     private void CreateCylinder()
@@ -119,14 +129,12 @@ public class FZCylinder : MonoBehaviour
     {
         Vector3 normal = reverseDirection ? Vector3.down : Vector3.up;
 
-        //one vertex in the center:
         meshBuilder.Vertices.Add(center);
         meshBuilder.Normals.Add(normal);
         meshBuilder.UVs.Add(new Vector2(0.5f, 0.5f));
 
         int centreVertexIndex = meshBuilder.Vertices.Count - 1;
 
-        //vertices around the edge:
         float angleInc = (Mathf.PI * 2.0f) / radialSegmentCount;
 
         for (int i = 0; i <= radialSegmentCount; i++)
@@ -143,7 +151,6 @@ public class FZCylinder : MonoBehaviour
             Vector2 uv = new Vector2(unitPosition.x + 1.0f, unitPosition.z + 1.0f) * 0.5f;
             meshBuilder.UVs.Add(uv);
 
-            //build a triangle:
             if (i > 0)
             {
                 int baseIndex = meshBuilder.Vertices.Count - 1;
@@ -157,4 +164,5 @@ public class FZCylinder : MonoBehaviour
             }
         }
     }
+
 }

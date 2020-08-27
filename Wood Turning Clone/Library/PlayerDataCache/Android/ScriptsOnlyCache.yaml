@@ -1,7 +1,23 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - WoodSubject
+    - Carver
+    - CarverTipChanger
+    - ColorPickerPanel
+    - DeformableMesh
+    - DynamicCanvas
+    - FZCylinder
+    - PhysicsDeformer
+    - Rotater
+    - Silhouette
+    - SimilarityChecker
+    - StateHandler
+    - TexturePainter
+    - UIPanelSwitcher
+    - cakeslice.Outline
+    - cakeslice.OutlineEffect
+    Unity.ProBuilder.dll:
+    - UnityEngine.ProBuilder.ProBuilderMesh
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.Graphs.dll:
@@ -14,6 +30,18 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEngine.UI.dll:
+    - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
+    - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.ContentSizeFitter
+    - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.GridLayoutGroup
+    - UnityEngine.UI.Image
+    - UnityEngine.UI.RawImage
+    - UnityEngine.UI.Slider
+    - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/SampleScene.unity:
     - Class: 1
@@ -34,21 +62,95 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 54
+      Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 84
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 14160}
+      Script: {instanceID: 11794}
+    - Class: 114
+      Script: {instanceID: 11882}
+    - Class: 114
+      Script: {instanceID: 11936}
+    - Class: 114
+      Script: {instanceID: 12030}
+    - Class: 114
+      Script: {instanceID: 12044}
+    - Class: 114
+      Script: {instanceID: 12096}
+    - Class: 114
+      Script: {instanceID: 12188}
+    - Class: 114
+      Script: {instanceID: 12252}
+    - Class: 114
+      Script: {instanceID: 12330}
+    - Class: 114
+      Script: {instanceID: 12364}
+    - Class: 114
+      Script: {instanceID: 12398}
+    - Class: 114
+      Script: {instanceID: 12606}
+    - Class: 114
+      Script: {instanceID: 12692}
+    - Class: 114
+      Script: {instanceID: 12852}
+    - Class: 114
+      Script: {instanceID: 13066}
+    - Class: 114
+      Script: {instanceID: 13082}
+    - Class: 114
+      Script: {instanceID: 13086}
+    - Class: 114
+      Script: {instanceID: 13304}
+    - Class: 114
+      Script: {instanceID: 13342}
+    - Class: 114
+      Script: {instanceID: 13562}
+    - Class: 114
+      Script: {instanceID: 13838}
+    - Class: 114
+      Script: {instanceID: 13886}
+    - Class: 114
+      Script: {instanceID: 14030}
+    - Class: 114
+      Script: {instanceID: 14572}
+    - Class: 114
+      Script: {instanceID: 14624}
+    - Class: 114
+      Script: {instanceID: 14670}
+    - Class: 114
+      Script: {instanceID: 14700}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 135
+      Script: {instanceID: 0}
+    - Class: 136
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
     - Class: 850595691
       Script: {instanceID: 0}
@@ -91,10 +193,22 @@ ScriptsOnlyBuild:
     className: Handles
   - hash:
       serializedVersion: 2
+      Hash: d629d0194d35a247f3174df0a80b288d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Carver
+  - hash:
+      serializedVersion: 2
       Hash: 9c7c87712e298256d276eb96e02a57b1
     assemblyName: Unity.ProBuilder.dll
     namespaceName: UnityEngine.ProBuilder
     className: PreferenceDictionary
+  - hash:
+      serializedVersion: 2
+      Hash: 1052eac6bfd18e300016fbc3303f9046
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: cakeslice
+    className: OutlineEffect
   - hash:
       serializedVersion: 2
       Hash: e7a73f5f78ba6445195ec23b74a1ce2d
@@ -119,6 +233,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ActivationTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 5e33079915c79dd19eda647391a57329
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DeformableMesh
   - hash:
       serializedVersion: 2
       Hash: 699619b86d9359741a4f58540298c80b
@@ -181,6 +301,12 @@ ScriptsOnlyBuild:
     className: PolyShape
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: cakeslice
+    className: OutlineAnimation
+  - hash:
+      serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -217,6 +343,12 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
+      Hash: 890494964803472aa87f7f9281cce144
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ModelViewControls
+  - hash:
+      serializedVersion: 2
       Hash: 05655f7deb066a961c41619ac9e98263
     assemblyName: Unity.ProBuilder.dll
     namespaceName: UnityEngine.ProBuilder
@@ -229,6 +361,12 @@ ScriptsOnlyBuild:
     className: AnimationTrack
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CarverTipChanger
+  - hash:
+      serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -239,6 +377,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.ProBuilder.Examples.dll
     namespaceName: ProBuilder.Examples
     className: SimpleGrid
+  - hash:
+      serializedVersion: 2
+      Hash: 46a48580ccb0dc7ed3e444579992196a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Silhouette
   - hash:
       serializedVersion: 2
       Hash: ef5c43f921427d03730f6ea4c848f07d
@@ -283,6 +427,18 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
+      Hash: 3fd0f0dc94cfd68c2bf112945360295d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: cakeslice
+    className: Outline
+  - hash:
+      serializedVersion: 2
+      Hash: 2787a6010ae862e95d4636472cc64b92
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ColorSelector
+  - hash:
+      serializedVersion: 2
       Hash: 6f99a93b2c0bb02a2939b9283d64d321
     assemblyName: Assembly-CSharp.dll
     namespaceName: SplineMesh
@@ -325,6 +481,18 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
+      Hash: 0fe6dc4395809388f4ffee299cb68eed
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SimilarityChecker
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: cakeslice
+    className: Rotate
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: SplineMesh
@@ -365,6 +533,24 @@ ScriptsOnlyBuild:
     assemblyName: Unity.ProBuilder.dll
     namespaceName: UnityEngine.ProBuilder
     className: ColliderBehaviour
+  - hash:
+      serializedVersion: 2
+      Hash: fe754843bb8813c04b4a845aaa7e4434
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UIPanelSwitcher
+  - hash:
+      serializedVersion: 2
+      Hash: 8003ca22ed1bf5abb39ed11463074894
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Rotater
+  - hash:
+      serializedVersion: 2
+      Hash: e1ab78236226cca2753a1d3ec72379c2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PhysicsDeformer
   - hash:
       serializedVersion: 2
       Hash: fbb979a8633559a0a2d5db6425a9f97b
@@ -437,6 +623,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.ProBuilder.dll
     namespaceName: UnityEngine.ProBuilder
     className: ColorPalette
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: StateHandler
   - hash:
       serializedVersion: 2
       Hash: f7bb6096199e0cf058d5d69878184cf4
@@ -517,10 +709,28 @@ ScriptsOnlyBuild:
     className: HueCube
   - hash:
       serializedVersion: 2
-      Hash: 189f4d5578d61258af3ebdb1c922e3eb
+      Hash: 648efde20d20b9e46890ca864fbed1ca
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GUIManager
+  - hash:
+      serializedVersion: 2
+      Hash: 253ffdd47787237a3b9a8c5e5d164dd4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FZCylinder
+  - hash:
+      serializedVersion: 2
+      Hash: 503702a50df17b25dd75a918cd2c5305
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TexturePainter
+  - hash:
+      serializedVersion: 2
+      Hash: 66fa1d1447b9cd3593baff1859160a98
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: cakeslice
+    className: MaterialSwitcher
   - hash:
       serializedVersion: 2
       Hash: e4aac510b698bae77a5dbde189fe88e5
@@ -545,6 +755,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: GraphicRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: cakeslice
+    className: Toggle
   - hash:
       serializedVersion: 2
       Hash: 88cc9df3c6fc697bfbeacd24c0d6f2d7
@@ -691,6 +907,12 @@ ScriptsOnlyBuild:
     className: ToggleGroup
   - hash:
       serializedVersion: 2
+      Hash: 5d96cdf4c005982ca093140fe2f808d7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ColorPickerPanel
+  - hash:
+      serializedVersion: 2
       Hash: 3a26e1d916e95ac20d8847a867144abf
     assemblyName: Assembly-CSharp.dll
     namespaceName: SplineMesh
@@ -701,6 +923,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DynamicCanvas
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
