@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class DynamicCanvas : MonoBehaviour
 {
-
+    public Spray sprayObject;
 
     void Start()
     {
+        sprayObject.gameObject.SetActive(false);
         StateHandler.instance.OnStateChanged += OnStateChanged;
     }
 
@@ -20,6 +21,7 @@ public class DynamicCanvas : MonoBehaviour
             {
                 child.gameObject.SetActive(true);
             }
+            sprayObject.gameObject.SetActive(true);
         }
     }
 }

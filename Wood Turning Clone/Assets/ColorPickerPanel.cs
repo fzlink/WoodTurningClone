@@ -10,6 +10,7 @@ public class ColorPickerPanel : MonoBehaviour
     public List<Color> colors;
     public List<Button> buttons;
     private static Color currentColor;
+    public Spray spray;
 
     void Start()
     {
@@ -44,6 +45,7 @@ public class ColorPickerPanel : MonoBehaviour
     public void SetCurrentColor(int buttonInd)
     {
         currentColor = colors[buttonInd];
+        spray.ChangeColor(currentColor);
     }
 
     public static Color GetCurrentColor()

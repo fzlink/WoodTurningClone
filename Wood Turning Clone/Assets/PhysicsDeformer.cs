@@ -5,6 +5,7 @@ using UnityEngine;
 public class PhysicsDeformer : MonoBehaviour
 {
     public DeformableMesh deformableMesh;
+    public CarveParticleManager particleManager;
 
     private void OnCollisionStay(Collision collision)
     {
@@ -13,5 +14,6 @@ public class PhysicsDeformer : MonoBehaviour
         {
             deformableMesh.AddDepression(contact.point, collision.collider.bounds.extents.x/8);
         }
+        particleManager.PlayParticleAtLocation(collision.GetContact(0).point);
     }
 }

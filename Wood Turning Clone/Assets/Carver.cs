@@ -71,7 +71,7 @@ public class Carver : MonoBehaviour
                 Touch touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Began && EventSystem.current.IsPointerOverGameObject(touch.fingerId))
                 return;
-            else if(touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
+            else if(touch.phase == TouchPhase.Moved)
                 Drag(touch.position);
             }
             /*else

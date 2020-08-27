@@ -16,6 +16,7 @@ public class TexturePainter : MonoBehaviour {
 	public Sprite cursorPaint,cursorDecal; // Cursor for the differen functions 
 	public RenderTexture canvasTexture; // Render Texture that looks at our Base Texture and the painted brushes
 	public Material baseMaterial; // The material of our base texture (Were we will save the painted texture)
+	public Spray sprayObject;
 
 	Painter_BrushMode mode; //Our painter mode (Paint brushes or decals)
 	float brushSize=1.5f; //The size of our brush
@@ -74,6 +75,7 @@ public class TexturePainter : MonoBehaviour {
 	bool HitTestUVPosition(ref Vector3 uvWorldPosition){
 		RaycastHit hit;
 		Vector3 cursorPos = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 0.0f);
+		//sprayObject.SetCursorPos(cursorPos);
 		Ray cursorRay=sceneCamera.ScreenPointToRay (cursorPos);
 		if (Physics.Raycast(cursorRay,out hit,200)){
 			MeshCollider meshCollider = hit.collider as MeshCollider;
