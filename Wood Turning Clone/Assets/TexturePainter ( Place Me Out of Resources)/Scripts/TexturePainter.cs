@@ -16,13 +16,19 @@ public class TexturePainter : MonoBehaviour {
 	public Sprite cursorPaint,cursorDecal; // Cursor for the differen functions 
 	public RenderTexture canvasTexture; // Render Texture that looks at our Base Texture and the painted brushes
 	public Material baseMaterial; // The material of our base texture (Were we will save the painted texture)
-	public Spray sprayObject;
+	public MeshRenderer canvasBaseMaterial;
 
 	Painter_BrushMode mode; //Our painter mode (Paint brushes or decals)
 	float brushSize=1.5f; //The size of our brush
 	Color brushColor; //The selected color
 	int brushCounter=0,MAX_BRUSH_COUNT=1000; //To avoid having millions of brushes
 	bool saving=false; //Flag to check if we are saving the texture
+
+    private void Start()
+    {
+		baseMaterial = Instantiate(baseMaterial);
+		canvasBaseMaterial.material = baseMaterial;
+    }
 
     void Update () {
 
@@ -41,12 +47,11 @@ public class TexturePainter : MonoBehaviour {
 		if(HitTestUVPosition(ref uvWorldPosition)){
 			GameObject brushObj;
 			if(mode==Painter_BrushMode.PAINT){
-
-				brushObj=(GameObject)Instantiate(Resources.Load("TexturePainter-Instances/BrushEntity")); //Paint a brush
+				brushObj =(GameObject)Instantiate(Resources.Load("TexturePainter-Instances/BrushEntity")); //Paint a brush
 				brushObj.GetComponent<SpriteRenderer>().color=brushColor; //Set the brush color
 			}
 			else{
-				brushObj=(GameObject)Instantiate(Resources.Load("TexturePainter-Instances/DecalEntity")); //Paint a decal
+				brushObj =(GameObject)Instantiate(Resources.Load("TexturePainter-Instances/DecalEntity")); //Paint a decal
 			}
 			brushColor.a=brushSize*2.0f; // Brushes have alpha to have a merging effect when painted over.
 			brushObj.transform.parent=brushContainer.transform; //Add the brush to our container to be wiped later
@@ -75,7 +80,7 @@ public class TexturePainter : MonoBehaviour {
 	bool HitTestUVPosition(ref Vector3 uvWorldPosition){
 		RaycastHit hit;
 		Vector3 cursorPos = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 0.0f);
-		//sprayObject.SetCursorPos(cursorPos);
+
 		Ray cursorRay=sceneCamera.ScreenPointToRay (cursorPos);
 		if (Physics.Raycast(cursorRay,out hit,200)){
 			MeshCollider meshCollider = hit.collider as MeshCollider;
@@ -87,7 +92,8 @@ public class TexturePainter : MonoBehaviour {
 			uvWorldPosition.z=0.0f;
 			return true;
 		}
-		else{		
+		else{
+
 			return false;
 		}
 		
@@ -101,7 +107,7 @@ public class TexturePainter : MonoBehaviour {
 		tex.ReadPixels (new Rect (0, 0, canvasTexture.width, canvasTexture.height), 0, 0);
 		tex.Apply ();
 		RenderTexture.active = null;
-		baseMaterial.mainTexture =tex;	//Put the painted texture as the base
+		baseMaterial.mainTexture = tex;	//Put the painted texture as the base
 		foreach (Transform child in brushContainer.transform) {//Clear brushes
 			Destroy(child.gameObject);
 		}
